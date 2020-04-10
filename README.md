@@ -23,13 +23,13 @@ or
 
     yarn add -D @babel/cli @babel/core @babel/node babel-watch @babel/preset-env
 
-## Install npx globally 
+## Install npx and eslint globally 
 
     npm install -g npx eslint
 
 or 
 
-    yarn global add npx
+    yarn global add npx eslint
 
 ## Babel config in .babelrc file
 
@@ -50,9 +50,3 @@ or
     npm run exec
     npm run watch
 
-## Homework
-## Read a file and output its content in the console using node and babel
-1. Path to file
-2. App will read the path and  out the content in the console
-3. One file read functionality
-4. Second file output the contents of the file
