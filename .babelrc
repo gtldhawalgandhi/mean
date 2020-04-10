@@ -1,10 +1,17 @@
 {
-    "presets": [["@babel/preset-env", {
-        "useBuiltIns": "entry", // or "entry"
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
         "corejs": 3
-      }]],
-    "comments": false,
-    "plugins": [["@babel/plugin-transform-runtime", {
-        "regenerator": true
-    }]]
+      }
+    ]
+  ],
+  "comments": false,
+  "env": {
+    "production": {
+      "presets": ["minify"]
+    }
+  }
 }

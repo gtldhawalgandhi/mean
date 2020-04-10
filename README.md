@@ -33,10 +33,10 @@ or
 
 ## Babel config in .babelrc file
 
-    {
-    "presets": ["@babel/preset-env"]
-    // "plugins": ["@babel/plugin-transform-modules-commonjs"]
-}
+        {
+        "presets": ["@babel/preset-env"]
+        // "plugins": ["@babel/plugin-transform-modules-commonjs"]
+        }
 
 ## Add this inside your package.json for convenience
 
@@ -45,8 +45,12 @@ or
         "watch": "npx babel-watch app.js"
       }
 
-## Run using scripts
+## Run using scripts using yarn/npm
 
     npm run exec
     npm run watch
 
+## Running scripts using env variables
+
+    dir=. yarn run exec # Linux
+    $env:dir = 'someValue' ; yarn run exec # Windows Powershell
