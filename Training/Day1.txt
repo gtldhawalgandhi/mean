@@ -1,0 +1,471 @@
+- Introduction
+- Javascript Refresher
+- What is Javascript?
+- JavaScript is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else.
+- JavaScript is a dynamically-typed language.
+It means that variables created using var or let keywords can be dynamically re-assigned to a value of another type at some point later in your JavaScript program.
+- In statically-typed languages doing :
+A language is statically-typed if the type of a variable is known at compile-time instead of at run-time. Common examples of statically-typed languages include Java, C, C++, FORTRAN, Pascal and Scala.
+
+- How it works?
+- DOM(The Document Object Model (DOM) is a programming API for HTML and XML documents) takes HTML and renders
+- CSS style page
+- Javascript Engine
+- (V8 from Google / SpiderMonkey is developed by Mozilla for use in Firefox and its forks / JavaScriptCore is Apple's engine for its Safari browser / Chakra is the JavaScript engine of the Internet Explorer browser.)
+- A Just-In-Time (JIT) compiler is a feature of the run-time interpreter, that instead of interpreting bytecode every time a method is invoked, will compile the bytecode into the machine code instructions of the running machine, and then invoke this object code instead
+- Memory Heap
+- this is where the memory allocation happens
+- Call Stack
+- The Call Stack is a data structure which records basically where in the program we are. If we step into a function, we put it on the top of the stack. If we return from a function, we pop off the top of the stack. That’s all the stack can do.
+- Stack Frame
+- APIs like setTimeout - this is provided by browser
+- Single threaded - This processes contain the execution of instructions in a single sequence. In other words, one command is processes at a time. The opposite of single threaded processes are multithreaded processes. These processes allow the execution of multiple parts of a program at the same time
+- Event Loop : This has one simple job — to monitor the Call Stack and the Callback Queue. If the Call Stack is empty, it will take the first event from the queue and will push it to the Call Stack, which effectively runs it. Such an iteration is called a tick in the Event Loop.
+
+
+- Variables
+- Variables are placeholder names for different types of values.
+- var / let / const
+eg:
+var a = 10;
+let a = 10;
+const a = 10;
+- Variables are case-sensitive.
+
+var UserId = 38
+console.log(UserId);
+
+- Data Types
+- Primitive Data Types
+- null
+var a = null;
+
+- undefined
+if(typeof(a) != undefined)
+
+- number
+var a number : 10;
+
+- string
+var a string : 'test';
+
+- boolean
+var a boolean : true/false    0/1;
+
+- bigint (ES10)
+var a BigInt : 42343242;
+
+- symbol (ES6)
+
+- Non-primitive values
+- array
+var a = array(4)
+var a = ['3','4','5']
+
+- object
+classTest('234234')
+{
+......
+
+}
+
+var a = new classTest('234234')
+
+
+
+- function
+function test(){
+
+}
+function test(11,'abc'){
+
+}
+
+- Date
+
+
+- TypeOf : It is an operator provided by several programming languages to determine the data type of a variable.
+var a = 10;
+console.log(typeOf(a))
+
+O/P : integer
+
+var a = '2020';
+console.log(typeOf(a))
+
+O/P : string
+
+
+- Type Coercion
+- Coercion is the process of converting a value from one type into another.
+- If both values are integers, arithmetic operation is performed. If one of them is a string then coercion happens and string addition is invoked.
+
+var a = 1 + 2   => 3
+var b = 'test' + 2 => test2
+
+- Value vs Reference
+Pass by Value
+   int i;
+   i = 24;
+
+   int j;
+   j = i;
+
+Pass by Reference
+   Circle C1;
+   C1 = new Circle(5);
+
+   Circle C2 = C1;
+
+
+- Operators
+- Arithmetic
+- -
+var a = 5-2  => 3
+
+- +
+var a = 5+2  => 7
+
+- *
+var a = 5*2  => 10
+
+- /
+var a = 6/2  => 3
+
+- ++
+var a = 10
+a++
+console.log(a) => 11
+
+- --
+var a = 10
+a--
+console.log(a) => 9
+
+- Assignment
+- =
+var a = 10
+
+- +=
+var a = 10
+var a += 5   |||   a = a + 5
+=> 15
+
+- -=
+var a = 10
+var a -= 5   |||   a = a - 5
+=> 5
+
+- *=
+var a = 10
+var a *= 5   |||   a = a * 5
+=> 50
+
+- /=
+var a = 10
+var a /= 5   |||   a = a / 5
+=> 2
+
+- %=
+var a = 10
+var a %= 5   |||   a = a % 5
+=> 0
+
+- String
+- =
+var a = 'test'
+
+- += concat
+var a = 'gateway'
+a += ' corp'
+=>'gateway corp'
+
+
+- + add
+var a = 'gateway' + ' corp'
+=>'gateway corp'
+
+
+  - Comparision
+- == (equal to)
+if(10 == 10){
+o/p
+}
+
+- === (equal to - with datatype)
+if(10 === 10){
+o/p
+}
+
+- != (not equal to)
+if(10 != 10){
+o/p
+}
+
+- !== (not equal to - with datatype)
+if('10' !== 10){
+o/p
+}
+
+- >
+if(10 > 5){
+o/p
+}
+
+- <
+if(5 < 10){
+o/p
+}
+
+- >=
+if(12 >= 10){
+o/p
+}
+
+- <=
+if(10 <= 10){
+o/p
+}
+
+- Logical
+- && (AND)
+var a = 10
+var b = 10
+if(a = 10 && b = 10)
+{
+o/p
+}
+
+- ||  (OR)
+var a = 12
+var b = 10
+if(a = 10 || b = 10)
+{
+o/p
+}
+
+- ! (NOT)
+        var a = null
+        if(!a){
+        o/p
+        }
+
+
+- Bitwise
+- &
+- |
+- ^
+- <<
+- >>
+
+
+- Other
+- ternary - ? :
+var a = 10
+if(a==10 ? 'yes' : 'no' )
+
+or
+
+var a = 10
+if(a==10){
+console.log('yes')
+}else{
+console.log('no')
+}
+
+- delete
+
+- in
+
+
+- Functions
+- kind of functions
+- Named function : It is a function declaration if it appears as a statement.
+For example:
+function developers() {
+return "Training 2020";
+}
+developers()
+- Arrow function
+var hello = () => {
+ return "Hello World!";
+}
+- Anonymous function : Anonymous function is a function definition that is not bound to an identifier
+eg:
+var x = function (a, b) {return a * b};
+var z = x(4, 3);
+- function expression
+function functionName(parameters) {
+  // code to be executed
+}
+- function params
+var x = function (a, b) {return a * b};
+var z = x(4, 3);
+- Conditions
+- if else
+var a = 10
+if(a==10){
+console.log('yes')
+}else if(a == 12){
+console.log('12')
+}else{
+console.log('no')
+}
+
+- switch case
+var a = 10;
+switch {
+case 1 :
+{
+......
+},
+case 2 :
+{
+......
+}
+...
+..
+
+}
+
+
+- Loops
+- while
+var text = "";
+var i = 0;
+while (i < 5) {
+ text += "<br>The number is " + i;
+ i++;
+}
+- for
+var text = "";
+var i;
+for (i = 0; i < 5; i++) {
+ text += "The number is " + i + "<br>";
+}
+- forEach
+var fruits = ["apple", "orange", "cherry"];
+fruits.forEach(myFunction);
+
+function myFunction(item, index) {
+ document.getElementById("demo").innerHTML += index + ":" + item + "<br>";
+}
+- for of
+var cars = ['BMW', 'Volvo', 'Mini'];
+var x;
+
+for (x of cars) {
+ document.write(x + "<br >");
+}
+- for in
+var person = {fname:"John", lname:"Doe", age:25};
+
+var text = "";
+var x;
+for (x in person) {
+ text += person[x] + " ";
+}
+"John"
+"Doe"
+25
+
+
+- Higher order functions (with array)
+- map
+var numbers = [4, 9, 16, 25];
+var x = numbers.map(Math.sqrt)
+document.getElementById("demo").innerHTML = x;
+s o/p : 2,3,4,5
+
+- reduce
+- Subtract the numbers in the array, starting from the beginning
+var numbers = [175, 50, 25];
+document.getElementById("demo").innerHTML = numbers.reduce(myFunc);
+function myFunc(total, num) {
+ return total - num;
+}
+
+175-50 = 125
+125-25 = 100
+o/p : 100
+
+- filter
+- The filter() method creates an array filled with all array elements that pass a test (provided as a function)
+eg:
+var ages = [32, 33, 16, 40];
+function checkAdult(age) {
+ return age >= 18;
+}
+function myFunction() {
+ document.getElementById("demo").innerHTML = ages.filter(checkAdult);
+}
+
+O/P  : 32,33,40
+- keys
+- Create an Array Iterator object, only containing the keys of the array, and then loop through each key
+eg : var fruits = ["Banana", "Orange", "Apple", "Mango"];
+var fk = fruits.keys();
+
+for (x of fk) {
+ document.getElementById("demo").innerHTML += x + "<br>";
+}
+O/P :
+0
+1
+2
+3
+
+
+
+- Hoisting
+- Hoisting simply means ”raised” or ”placed on top of”.
+- let / const does not get attached to global object
+- var gets attached to global object
+- var hoisting within function does not return error when used before declaration
+- let generates error
+- Functions are hoisted first. Then variables.
+- Keywords let and const limit variable to the scope in which they were defined
+
+- Scope
+- Scope is simply the area enclosed by {} brackets.
+
+fuction abc(){
+
+var x = ''
+
+}
+
+- Types
+- global
+- Anything (even a function definition) defined in global scope becomes available anywhere in your program. The value propagates into all inner scopes.
+
+var x = 10
+
+function test(){
+  console.log(x);
+  var b = 'parent'
+}
+
+
+- function
+- variable scope is limited to function
+- can access global scope
+- child function can access parent function variables
+
+- Closures
+- Global variables can be made local (private) with closures.
+// Initiate counter
+var counter = 0;
+
+// Function to increment counter
+function add() {
+ counter += 1;  //  counter = counter + 1;
+}
+
+// Call add() 3 times
+add();
+add();
+add();
+
+// The counter should now be 3
+document.getElementById("demo").innerHTML = "The counter is: " + counter;

@@ -1,0 +1,103 @@
+#### Day 3
+
+# Practical
+# JS Errors
+# JS Promises async/await ES6 vs 'then' ES5 
+# diff between var let const 
+# Node installation
+# Node package managers NPM and Yarn
+# VSCode and node
+# Run your first node in VSCode 
+
+###############################################################
+// Promises
+// OS -> Cores -> Thread
+// Programs to run independently
+// 3 parallel jobs that are independent CORES
+// 1 Job -> 1 Core -> Thread
+// FRONT END: JS ONE THREAD
+// EVENT LOOP and PROMISES
+// // EVENT LOOP RUNS INFINITELY
+// JSON -> FrontEnd => BackEnd (NODEJS)
+// 
+// () => {} == function(){}
+// 
+// NODEJS (BACKEND)
+// 
+function longRunningFunction() {
+  return new Promise( (resolve, reject) => {
+    // long running job takes 2 sec (simulation)
+    setTimeout(()=>{
+      console.log('Inside setTimeout')
+      //resolve('This is resolved Data')
+      reject('Some error')
+    }, 500) 
+    // Get data from DB
+    // 
+    // resolve(dataFromDB)
+    //resolve('Immediate resolve data')
+  } )
+}
+
+// ES6 syntax (Babel)
+async function myJob(){
+  // Input/Output Ops
+  try {
+   var res = await longRunningFunction()
+   console.log(res)
+   console.log('Job finished')
+  } catch(err) {
+    console.log(err)
+    // http response "Something went wrong. PLease try again"
+  } 
+}
+
+// ES5 Promises
+function myJob2(){
+  longRunningFunction().then( function(data){
+    console.log(data)
+    console.log('Job Finished in ES5')    
+  } )
+  
+}
+
+
+// Scoping
+// let and const are only in ES6 and above
+
+{
+if (true) {
+  var h = "h"
+  let g = "g"
+  const f = "f"
+}
+
+console.log(h)
+}
+
+###############################################################
+
+# Nodejs & NPM & YARN
+// Package Manager
+// Node v 12.* (Recommended)
+// npm 6.*
+
+// Install locally and install globally
+// 
+
+	node -v
+	npm -v 
+
+# Install package globally using npm and yarn
+npm install -g eslint 
+yarn global add eslint
+
+Global packages are installed throught your system where as local packages are installed locally to your project
+You can find the location of all packages installed globally here
+
+C:\Users\<USER>\AppData\Roaming\npm\node_modules
+
+Replace <USER> value appropriately
+
+// Lint (checks you code )
+// How you should write and how you should not write your code

@@ -1,0 +1,46 @@
+##### Day 2:
+
+# Chrome developer tools using F12
+# Chrome Extension using ScratchJS
+# JSFiddle
+
+# JS Basics: Hands On
+
+# OOP
+
+class anotherClass {
+  data = 12
+  print(){
+  console.log("Printing from Another Class")
+    console.log(this.data)
+  }
+}
+
+class myClass {
+ 
+	constructor(data){
+		this.data = data
+	}
+	
+	myMethod(){
+		console.log("This is a method")
+		console.log(this.data)
+		var anotherObj = new anotherClass()
+		anotherObj.print()
+    
+		// Change the context of 'this'
+ 		// anotherObj.print.apply(this)
+	}
+ }
+ 
+ function myFn(){
+	console.log("This is a function ")
+ }
+ 
+ console.log(myFn)
+ 
+var obj = new myClass("My Data")
+console.log(obj.myMethod())
+ 
+
+

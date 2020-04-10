@@ -1,0 +1,17 @@
+{
+  "name": "mean_js",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "exec": "npx babel-node app.js",
+    "watch": "npx babel-watch app.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "",
+    "@babel/core": "^7.9.0",
+    "babel-watch": "",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0"    
+  }
+}
