@@ -1,4 +1,10 @@
 {
-    "presets": ["@babel/preset-env"]
-    // "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    "presets": [["@babel/preset-env", {
+        "useBuiltIns": "entry", // or "entry"
+        "corejs": 3
+      }]],
+    "comments": false,
+    "plugins": [["@babel/plugin-transform-runtime", {
+        "regenerator": true
+    }]]
 }
