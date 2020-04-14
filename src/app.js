@@ -1,6 +1,8 @@
 // import 'regenerator-runtime/runtime';
 
 import FileManager, { readFile } from './lib';
+import logger from './logger';
+import config from './config';
 
 // Async await ??????
 
@@ -12,9 +14,9 @@ const readMyFile = async (filename) => {
     // Style 2 -> Calling static method on imported Class
     const data = await FileManager.read(filename);
 
-    console.log(data);
+    logger.warn(data);
   } catch (err) {
-    console.log(`Error while reading file: ${err}`);
+    logger.error(`Error while reading file: ${err}`);
   }
 };
 
@@ -22,9 +24,4 @@ const readMyFile = async (filename) => {
 // readMyFile(__dirname + '/package.json');
 
 // Reading from environment variables;
-readMyFile(`${process.env.dir}/package.json`);
-const a = 'hell';
-const obj = {
-  [a]: 'world',
-};
-console.log(obj);
+readMyFile(`${config.dir}/package.json`);

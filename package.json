@@ -10,17 +10,19 @@
     "build": "npx babel src -d build"
   },
   "dependencies": {
-    "core-js": "^3.2.1"
+    "core-js": "^3.2.1",
+    "dotenv": "^8.2.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@babel/cli": "7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.0",
+    "babel-preset-minify": "",
     "babel-watch": "^7.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "babel-preset-minify": ""
+    "eslint-plugin-import": "^2.20.2"
   }
 }
