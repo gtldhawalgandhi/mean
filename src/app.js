@@ -1,12 +1,15 @@
 // import 'regenerator-runtime/runtime';
 
 import FileManager, { readFile } from './lib';
-import logger from './logger';
+import Logger from './logger';
 import config from './config';
+
+const logger = new Logger('Root', 'app.js');
 
 // Async await ??????
 
 const readMyFile = async (filename) => {
+  logger.debug('readMyFile');
   try {
     // Style1 -> Calling imported functions
     // const data = await readFile(filename);
@@ -15,13 +18,15 @@ const readMyFile = async (filename) => {
     const data = await FileManager.read(filename);
 
     logger.warn(data);
+    return data;
   } catch (err) {
     logger.error(`Error while reading file: ${err}`);
   }
 };
 
+export default readMyFile;
 // Reading from __dirname
 // readMyFile(__dirname + '/package.json');
 
 // Reading from environment variables;
-readMyFile(`${config.dir}/package.json`);
+// readMyFile(`${config.dir}/package.json`);
