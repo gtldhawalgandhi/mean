@@ -1,32 +1,61 @@
-// import 'regenerator-runtime/runtime';
+import jwt from 'jsonwebtoken';
+import Express from 'express';
+import fileupload from 'express-fileupload';
+import personRouter from './routes/person';
+import { register, login } from './controllers/person';
 
-import FileManager, { readFile } from './lib';
-import Logger from './logger';
-import config from './config';
+const app = new Express();
 
-const logger = new Logger('Root', 'app.js');
+// app.use(fileupload());
+app.use(Express.json());
+app.use(Express.urlencoded({ extended: true }));
 
-// Async await ??????
-
-const readMyFile = async (filename) => {
-  logger.debug('readMyFile');
-  try {
-    // Style1 -> Calling imported functions
-    // const data = await readFile(filename);
-
-    // Style 2 -> Calling static method on imported Class
-    const data = await FileManager.read(filename);
-
-    logger.warn(data);
-    return data;
-  } catch (err) {
-    logger.error(`Error while reading file: ${err}`);
+const tokenMiddleware = (req, res, next) => {
+  const token = req.headers && req.headers.authorization;
+  if (token) {
+    const decodedJWTData = jwt.verify(token, 'serverSecretKey');
+    req.user = decodedJWTData;
+    next();
+  } else {
+    res.status(404).json({
+      err: 'unauthorized access',
+    });
   }
 };
 
-export default readMyFile;
-// Reading from __dirname
-// readMyFile(__dirname + '/package.json');
+app.use('/person', tokenMiddleware, fileupload(), personRouter);
 
-// Reading from environment variables;
-// readMyFile(`${config.dir}/package.json`);
+app.post('/login', async (req, res) => {
+  if (!req.body.email && !req.body.password) {
+    res.status(401).json({
+      err: 'Email and Password are required',
+    });
+  }
+  const token = await login(req.body);
+  if (token) {
+    res.header('authorization', token).json({
+      status: 'ok',
+    });
+    return;
+  }
+  res.status(401).json({
+    err: 'Login failed!',
+  });
+});
+
+app.post('/register', async (req, res) => {
+  try {
+    if (!req.body.email && !req.body.password) {
+      res.status(401).json({
+        err: 'Email and Password are required',
+      });
+      return;
+    }
+    await register(req.body);
+    res.json({ status: 'ok' });
+  } catch (err) {
+    res.end(JSON.stringify(err));
+  }
+});
+
+export default app;

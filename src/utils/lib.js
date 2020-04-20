@@ -31,7 +31,7 @@ class FileManager {
     // } );
 
     return new Promise((resolve, reject) => {
-      const readStream = fs.createReadStream(filename, { encoding: 'utf-8' });
+      const readStream = fs.createReadStream(filename);
       readStream.on('data', (data) => {
         resolve(data);
       });

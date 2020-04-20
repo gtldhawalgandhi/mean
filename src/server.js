@@ -1,12 +1,15 @@
-import Express from 'express';
+import app from './app';
+import DB from './utils/db_conn';
 
-const expressApp = new Express();
-const port = 4444;
+const start = async () => {
+  await DB();
+  const port = 4444;
 
-expressApp.get('/', (req, res) => {
-  res.end('Test Ok');
-});
+  app.listen(port, '0.0.0.0', () => {
+    console.log(`Starting express server on port ${port}`);
+  });
+};
 
-expressApp.listen(port, '0.0.0.0', () => {
-  console.log(`Starting express server on port ${port}`);
-});
+(async () => {
+  await start();
+})();

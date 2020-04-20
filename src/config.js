@@ -1,11 +1,8 @@
 import dotenv from 'dotenv';
+dotenv.config({ path: __dirname + '/.env' });
 
-dotenv.config({ path: `${__dirname}/.env` });
-
-const config = {
-  dir: process.env.dir,
+export const config = {
+  dir: process.env.DIR,
   env: process.env.NODE_ENV,
-  logfile: process.env.logfilename,
+  db: process.env.DB,
 };
-
-export default config;

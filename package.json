@@ -4,17 +4,21 @@
   "license": "MIT",
   "author": "Dhawal Gandhi",
   "scripts": {
-    "preinstall": "npm install -g npx eslint",
     "exec": "npx babel-node src/app.js",
     "watch": "npx babel-watch src/app.js",
+    "server-watch": "npx babel-watch src/server.js",
     "build": "npx babel src -d build",
-    "test": "jest"
+    "test": "npx jest"
   },
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "core-js": "^3.2.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.3",
     "jest": "^25.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.9",
     "winston": "^3.2.1"
   },
   "devDependencies": {
