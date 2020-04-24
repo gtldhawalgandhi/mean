@@ -23,8 +23,46 @@ const tokenMiddleware = (req, res, next) => {
   }
 };
 
-app.use('/person', tokenMiddleware, fileupload(), personRouter);
+/*
+  Step(1)
 
+  POST request
+  raw: (application/json)
+  {
+    "email": "jon@email",
+    "password": "topsecret"
+  }
+
+  This will create entry into MongoDB
+*/
+app.post('/register', async (req, res) => {
+  try {
+    if (!req.body.email && !req.body.password) {
+      res.status(401).json({
+        err: 'Email and Password are required',
+      });
+      return;
+    }
+    await register(req.body);
+    res.json({ status: 'ok' });
+  } catch (err) {
+    res.end(JSON.stringify(err));
+  }
+});
+
+/*
+  Step(2)
+  POST request
+    x-www-form-urlencoded: (application/json)
+
+    email: jon@email
+    password: topsecret
+
+    Output: In the response header, there will be 'authorization' containing token
+    authorization = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.....
+
+    Use this token in request to /person
+*/
 app.post('/login', async (req, res) => {
   if (!req.body.email && !req.body.password) {
     res.status(401).json({
@@ -43,19 +81,11 @@ app.post('/login', async (req, res) => {
   });
 });
 
-app.post('/register', async (req, res) => {
-  try {
-    if (!req.body.email && !req.body.password) {
-      res.status(401).json({
-        err: 'Email and Password are required',
-      });
-      return;
-    }
-    await register(req.body);
-    res.json({ status: 'ok' });
-  } catch (err) {
-    res.end(JSON.stringify(err));
-  }
-});
+/*
+  Step(3)
+  In Postman add 'authorization' header with the value recieved during login
+*/
+app.use('/person', tokenMiddleware, fileupload(), personRouter);
+
 
 export default app;
